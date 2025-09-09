@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'theme/app_theme.dart';
 import 'career_list_screen.dart';
 import 'university_list_screen.dart';
 import 'scholarship_list_screen.dart';
@@ -16,9 +17,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: const Color(0xFF0E117A), // Deep indigo background
+        backgroundColor: AppTheme.getBackgroundColor(ScreenType.explore),
         appBar: AppBar(
-          backgroundColor: const Color(0xFF0E117A),
+          backgroundColor: AppTheme.getBackgroundColor(ScreenType.explore),
           elevation: 0,
           title: const Text(
             'Explore',
@@ -26,13 +27,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
               fontFamily: 'Poppins',
               fontSize: 20,
               fontWeight: FontWeight.w600,
-              color: Color(0xFFF8F9FA), // Off-white
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           bottom: TabBar(
-            indicatorColor: const Color(0xFF12E2A4), // Vibrant mint
-            labelColor: const Color(0xFF12E2A4), // Vibrant mint
-            unselectedLabelColor: const Color(0xFF9CA3AF), // Muted gray
+            indicatorColor: AppTheme.kAccentRed,
+            labelColor: AppTheme.kAccentRed,
+            unselectedLabelColor: AppTheme.kPrimaryWhite.withOpacity(0.6),
             labelStyle: const TextStyle(
               fontFamily: 'Nunito Sans',
               fontSize: 14,

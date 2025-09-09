@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// 1. Change the import to your new main app shell.
-import 'main_app_shell.dart';
+import 'package:lesotho_career_scholarship_guide/main_app_shell.dart';
+import 'package:lesotho_career_scholarship_guide/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'App Preview',
-      // 2. Change the home widget to MainAppShell.
+      title: 'Lesotho Career Guide',
+
+      // --- CHANGE THIS LINE ---
+      theme: AppTheme.darkTheme, // Switched from lightTheme to darkTheme
+
       home: const MainAppShell(),
     );
   }

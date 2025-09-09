@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'theme/app_theme.dart';
 
 class CareerDetailScreen extends StatefulWidget {
   final String careerName;
@@ -31,14 +32,14 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0E117A), // Deep indigo background
+      backgroundColor: AppTheme.getBackgroundColor(ScreenType.explore),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0E117A), // Same indigo color to blend in
+        backgroundColor: AppTheme.getBackgroundColor(ScreenType.explore),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Color(0xFFF8F9FA), // Off-white back button
+            color: AppTheme.kPrimaryWhite,
           ),
           onPressed: () => Navigator.pop(context),
         ),
@@ -47,7 +48,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
           style: const TextStyle(
             fontFamily: 'Poppins',
             fontWeight: FontWeight.bold,
-            color: Color(0xFFF8F9FA), // Off-white title
+            color: AppTheme.kPrimaryWhite,
             fontSize: 18,
           ),
         ),
@@ -55,7 +56,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
           IconButton(
             icon: const Icon(
               Icons.bookmark_border_rounded,
-              color: Color(0xFFF8F9FA), // Off-white save button
+              color: AppTheme.kPrimaryWhite,
             ),
             onPressed: () {
               // Save functionality placeholder - no logic yet
@@ -65,9 +66,9 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
         bottom: TabBar(
           controller: _tabController,
           isScrollable: true,
-          indicatorColor: const Color(0xFFF8F9FA),
-          labelColor: const Color(0xFFF8F9FA),
-          unselectedLabelColor: const Color(0xFFB8BCC8),
+          indicatorColor: AppTheme.kAccentRed,
+          labelColor: AppTheme.kAccentRed,
+          unselectedLabelColor: AppTheme.kPrimaryWhite.withOpacity(0.6),
           labelStyle: const TextStyle(
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w600,
@@ -112,16 +113,16 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 20,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             style: TextStyle(
               fontFamily: 'Nunito Sans',
               fontSize: 16,
-              color: Color(0xFFB8BCC8),
+              color: AppTheme.kPrimaryWhite.withOpacity(0.8),
               height: 1.5,
             ),
           ),
@@ -132,7 +133,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 12),
@@ -157,7 +158,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 20,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 16),
@@ -165,46 +166,44 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
             width: double.infinity,
             height: 200,
             decoration: BoxDecoration(
-              color: const Color(0xFF1A1E8A),
+              color: AppTheme.getCardColor(ScreenType.explore),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.play_circle_outline,
-                    size: 64,
-                    color: Color(0xFFF8F9FA),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.play_circle_outline,
+                  size: 64,
+                  color: AppTheme.kPrimaryWhite,
+                ),
+                SizedBox(height: 12),
+                Text(
+                  'Career Overview Video',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    color: AppTheme.kPrimaryWhite,
                   ),
-                  SizedBox(height: 12),
-                  Text(
-                    'Career Overview Video',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-                      color: Color(0xFFF8F9FA),
-                    ),
+                ),
+                Text(
+                  'Duration: 5:30',
+                  style: TextStyle(
+                    fontFamily: 'Nunito Sans',
+                    fontSize: 14,
+                    color: AppTheme.kPrimaryWhite,
                   ),
-                  Text(
-                    'Duration: 5:30',
-                    style: TextStyle(
-                      fontFamily: 'Nunito Sans',
-                      fontSize: 14,
-                      color: Color(0xFFB8BCC8),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'This video provides an in-depth look at what it\'s like to work in this field, featuring interviews with professionals and real workplace scenarios.',
             style: TextStyle(
               fontFamily: 'Nunito Sans',
               fontSize: 16,
-              color: Color(0xFFB8BCC8),
+              color: AppTheme.kPrimaryWhite.withOpacity(0.8),
               height: 1.5,
             ),
           ),
@@ -225,7 +224,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 20,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 16),
@@ -235,7 +234,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 12),
@@ -250,7 +249,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 12),
@@ -274,7 +273,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 20,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 16),
@@ -284,7 +283,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 12),
@@ -299,7 +298,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 12),
@@ -314,7 +313,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 12),
@@ -338,7 +337,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 20,
-              color: Color(0xFFF8F9FA),
+              color: AppTheme.kPrimaryWhite,
             ),
           ),
           const SizedBox(height: 16),
@@ -352,12 +351,12 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
           _buildSalaryCard('North West', 'R16,000 - R23,000', 'per month'),
           _buildSalaryCard('Northern Cape', 'R16,000 - R22,000', 'per month'),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'Note: Salaries vary based on company size, industry, and individual qualifications. These figures represent typical entry-level ranges.',
             style: TextStyle(
               fontFamily: 'Nunito Sans',
               fontSize: 14,
-              color: Color(0xFFB8BCC8),
+              color: AppTheme.kPrimaryWhite.withOpacity(0.8),
               fontStyle: FontStyle.italic,
             ),
           ),
@@ -372,11 +371,11 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 6.0), // Adjust alignment of bullet
+          Padding(
+            padding: const EdgeInsets.only(top: 6.0), // Adjust alignment of bullet
             child: Icon(
               Icons.circle,
-              color: Color(0xFFB8BCC8),
+              color: AppTheme.kPrimaryWhite.withOpacity(0.8),
               size: 6,
             ),
           ),
@@ -384,10 +383,10 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
           Expanded(
             child: Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Nunito Sans',
                 fontSize: 16,
-                color: Color(0xFFB8BCC8),
+                color: AppTheme.kPrimaryWhite.withOpacity(0.8),
               ),
             ),
           ),
@@ -398,7 +397,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
 
   Widget _buildProgressionCard(String level, String description) {
     return Card(
-      color: const Color(0xFF1A1E8A),
+      color: AppTheme.getCardColor(ScreenType.explore),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       margin: const EdgeInsets.only(bottom: 12),
       child: Padding(
@@ -409,7 +408,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
               width: 12,
               height: 12,
               decoration: const BoxDecoration(
-                color: Color(0xFFF8F9FA),
+                color: AppTheme.kPrimaryWhite,
                 shape: BoxShape.circle,
               ),
             ),
@@ -424,15 +423,15 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color: Color(0xFFF8F9FA),
+                      color: AppTheme.kPrimaryWhite,
                     ),
                   ),
                   Text(
                     description,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: 'Nunito Sans',
                       fontSize: 14,
-                      color: Color(0xFFB8BCC8),
+                      color: AppTheme.kPrimaryWhite.withOpacity(0.8),
                     ),
                   ),
                 ],
@@ -446,7 +445,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
 
   Widget _buildSalaryCard(String region, String range, String period) {
     return Card(
-      color: const Color(0xFF1A1E8A),
+      color: AppTheme.getCardColor(ScreenType.explore),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       margin: const EdgeInsets.only(bottom: 12),
       child: Padding(
@@ -463,26 +462,26 @@ class _CareerDetailScreenState extends State<CareerDetailScreen>
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: Color(0xFFF8F9FA),
+                    color: AppTheme.kPrimaryWhite,
                   ),
                 ),
                 Text(
                   period,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Nunito Sans',
                     fontSize: 12,
-                    color: Color(0xFFB8BCC8),
+                    color: AppTheme.kPrimaryWhite.withOpacity(0.8),
                   ),
                 ),
               ],
             ),
-            Text(
-              range,
-              style: const TextStyle(
+            const Text(
+              'range',
+              style: TextStyle(
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: Color(0xFFF8F9FA),
+                color: AppTheme.kPrimaryWhite,
               ),
             ),
           ],

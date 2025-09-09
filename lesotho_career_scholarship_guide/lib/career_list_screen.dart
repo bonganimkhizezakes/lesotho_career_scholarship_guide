@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'career_detail_screen.dart'; // Import the new detail screen
+import 'career_detail_screen.dart';
+import 'theme/app_theme.dart';
 
 class CareerListScreen extends StatelessWidget {
   const CareerListScreen({Key? key}) : super(key: key);
 
-  // New grouped data structure
   final Map<String, List<String>> placeholderCareerFields = const {
     'Technology': [
       'Software Engineer',
@@ -32,7 +32,6 @@ class CareerListScreen extends StatelessWidget {
     ],
   };
 
-  // Get appropriate icon based on career field
   IconData _getFieldIcon(String field) {
     switch (field.toLowerCase()) {
       case 'technology':
@@ -53,29 +52,28 @@ class CareerListScreen extends StatelessWidget {
     final fieldKeys = placeholderCareerFields.keys.toList();
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0E117A), // Main indigo background
+      backgroundColor: AppTheme.getBackgroundColor(ScreenType.explore),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
             const SizedBox(height: 20),
 
-            // Search Bar (kept from previous version)
             TextField(
               style: const TextStyle(
-                color: Color(0xFFF8F9FA), // Off-white text
+                color: AppTheme.kPrimaryWhite,
               ),
               decoration: InputDecoration(
                 prefixIcon: const Icon(
                   Icons.search,
-                  color: Color(0xFFF8F9FA), // Off-white icon
+                  color: AppTheme.kPrimaryWhite,
                 ),
                 hintText: 'Search for a career...',
-                hintStyle: const TextStyle(
-                  color: Color(0xFFF8F9FA), // Off-white hint
+                hintStyle: TextStyle(
+                  color: AppTheme.kPrimaryWhite.withOpacity(0.6),
                 ),
                 filled: true,
-                fillColor: const Color(0xFF1A1E8A), // Slightly lighter than main background
+                fillColor: AppTheme.getCardColor(ScreenType.explore),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
                   borderSide: BorderSide.none,
@@ -87,7 +85,7 @@ class CareerListScreen extends StatelessWidget {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
                   borderSide: const BorderSide(
-                    color: Color(0xFFF8F9FA),
+                    color: AppTheme.kAccentRed,
                     width: 1.0,
                   ),
                 ),
@@ -96,7 +94,6 @@ class CareerListScreen extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // Expandable List View
             Expanded(
               child: ListView.builder(
                 itemCount: fieldKeys.length,
@@ -105,7 +102,7 @@ class CareerListScreen extends StatelessWidget {
                   final careers = placeholderCareerFields[fieldName]!;
 
                   return Card(
-                    color: const Color(0xFF1A1E8A), // Slightly lighter than main background
+                    color: AppTheme.getCardColor(ScreenType.explore),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -113,7 +110,7 @@ class CareerListScreen extends StatelessWidget {
                     child: ExpansionTile(
                       leading: Icon(
                         _getFieldIcon(fieldName),
-                        color: const Color(0xFFF8F9FA), // Off-white icon
+                        color: AppTheme.kAccentRed,
                         size: 24,
                       ),
                       title: Text(
@@ -121,29 +118,28 @@ class CareerListScreen extends StatelessWidget {
                         style: const TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFF8F9FA), // Off-white color
+                          color: AppTheme.kPrimaryWhite,
                           fontSize: 16,
                         ),
                       ),
-                      iconColor: const Color(0xFFF8F9FA), // Off-white expand/collapse icon
-                      collapsedIconColor: const Color(0xFFF8F9FA), // Off-white when collapsed
+                      iconColor: AppTheme.kPrimaryWhite,
+                      collapsedIconColor: AppTheme.kPrimaryWhite,
                       children: careers.map((careerName) {
                         return ListTile(
                           contentPadding: const EdgeInsets.only(
-                            left: 72.0, // Indented look
+                            left: 72.0,
                             right: 16.0,
                             top: 4.0,
                             bottom: 4.0,
                           ),
                           title: Text(
                             careerName,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontFamily: 'Nunito Sans',
-                              color: Color(0xFFB8BCC8), // Muted off-white color
+                              color: AppTheme.kPrimaryWhite.withOpacity(0.8),
                               fontSize: 14,
                             ),
                           ),
-                          // --- NAVIGATION ADDED HERE ---
                           onTap: () {
                             Navigator.push(
                               context,
@@ -156,8 +152,6 @@ class CareerListScreen extends StatelessWidget {
                           },
                         );
                       }).toList(),
-                      // NOTE: I have corrected an error here.
-                      // The original code had a duplicated ".map((careerName) {...})" which would cause an error.
                     ),
                   );
                 },
